@@ -17,17 +17,11 @@ let people = () => {
       showValue.innerHTML = '';
       showDate.innerHTML = '';
 
-      for (let name of xhttp.response) {
-        showName.innerHTML += `<p>${name.txt}</p>`
-      };
-      for (let value of xhttp.response) {
-        showValue.innerHTML += `<p>${value.cc}</p>`
-      };
-      for (let cost of xhttp.response) {
-        showCost.innerHTML += `<p>${cost.rate}</p>`
-      };
-      for (let date of xhttp.response) {
-        showDate.innerHTML += `<p>${date.exchangedate}</p>`
+      for (let property in xhttp.response) {
+        showName.innerHTML += `<p>${xhttp.response[property].txt}</p>`;
+        showCost.innerHTML += `<p>${xhttp.response[property].cc}</p>`;
+        showValue.innerHTML += `<p>${xhttp.response[property].rate}</p>`;
+        showDate.innerHTML += `<p>${xhttp.response[property].exchangedate}</p>`;
       };
     };
   };
