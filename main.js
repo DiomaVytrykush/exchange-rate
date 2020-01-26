@@ -1,16 +1,22 @@
-var content = document.querySelector(".content");
-var showName = document.querySelector(".name");
-var showValue = document.querySelector(".value");
-var showCost = document.querySelector(".cost");
-var showDate = document.querySelector(".date");
+let content = document.querySelector(".content");
+let showName = document.querySelector(".name");
+let showValue = document.querySelector(".value");
+let showCost = document.querySelector(".cost");
+let showDate = document.querySelector(".date");
 
-var people = function () {
-  var xhttp = new XMLHttpRequest();
+let people = () => {
+  let xhttp = new XMLHttpRequest();
   xhttp.open("GET", "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json", true);
   xhttp.responseType = 'json';
-  xhttp.onload = function () {
+  xhttp.onload = () => {
     let status = xhttp.status;
     if (status == 200) {
+
+      showName.innerHTML = '';
+      showCost.innerHTML = '';
+      showValue.innerHTML = '';
+      showDate.innerHTML = '';
+
       for (let name of xhttp.response) {
         showName.innerHTML += `<p>${name.txt}</p>`
       };
@@ -28,6 +34,6 @@ var people = function () {
   xhttp.send();
 };
 
-var show = function () {
+let show = () => {
   people();
 };
